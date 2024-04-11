@@ -25,5 +25,5 @@ jobs:
       - name: Build and push
         run: |
           cd $WORKING_DIRECTORY
-          docker build -t test
+          docker build -t test .
           docker push bblksam16/tp2:latest
