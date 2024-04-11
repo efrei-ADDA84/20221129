@@ -7,7 +7,7 @@
   "name": "20221129",
   "description": "JohannKouame's repository 1) Installations J'ai dû installer 'node-fetch' avec la commande [npm install node-fetch --save]",
   "version": "1.0.0",
-  "main": "wrapper.js",
+  "main": "api.js",
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

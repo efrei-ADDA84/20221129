@@ -1,12 +1,11 @@
 import fetch from "node-fetch";
-const express = require("express");
+import express from "express";
 
 const app = express();
 
 app.get("/", async (req, res) => {
   const { lat, lon } = req.query;
-  // const API_KEY = process.env.API_KEY
-  const API_KEY = "09edc53de3c70b6efe1e53ff6f7bbba9";
+  const API_KEY = process.env.API_KEY;
   const weatherURL = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&APPID=${API_KEY}`;
   try {
     const response = await fetch(weatherURL);
@@ -19,7 +18,7 @@ app.get("/", async (req, res) => {
   }
 });
 
-const port = 8081;
+const port = 8084;
 app.listen(port, () => {
-  console.log("Api is running");
+  console.log("Api is running on port : ", port);
 });
