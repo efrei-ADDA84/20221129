@@ -13,10 +13,10 @@ jobs:
           registry: docker.io
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_TOKEN }}
-          
+
       # Exécutez votre commande Docker build à partir du répertoire tp2
       - name: Docker build
-        run:  docker build -t test -f tp2/Dockerfile tp2/
+        run:  docker build -t tp2 -f tp2/Dockerfile tp2/
         
       - name: Push Docker image to Docker Hub
         run: docker push bblksam16/tp2:latest
