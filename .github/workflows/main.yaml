@@ -14,8 +14,21 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_TOKEN }}
 
-      - name: Docker build
-        run: docker build -t test /Users/tech/projects/perso/20221129/tp2
+      - name: Display path
+        run: pwd
 
-      - name: Push Docker image to Docker Hub
-        run: docker push bblksam16/tp2:latest
+      - name: Change directory and save path
+        run: |
+          cd tp2
+          echo "WORKING_DIRECTORY=$(pwd)" >> $GITHUB_ENV
+
+      - name: Display files in tp2 directory
+        run: |
+          cd $WORKING_DIRECTORY
+          ls
+
+      - name: Display files in current directory
+        run: ls
+
+      - name: Display path
+        run: pwd
