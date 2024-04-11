@@ -31,7 +31,7 @@ jobs:
         run: ls
 
       - name: Docker build
-        run: docker build -t test .
+        run: docker build -t test ./tp2/
 
       - name: Push Docker image to Docker Hub
         run: docker push bblksam16/tp2:latest
