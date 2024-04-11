@@ -22,13 +22,8 @@ jobs:
           cd tp2
           echo "WORKING_DIRECTORY=$(pwd)" >> $GITHUB_ENV
 
-      - name: Display files in tp2 directory
+      - name: Build and push
         run: |
           cd $WORKING_DIRECTORY
-          ls
-
-      - name: Display files in current directory
-        run: ls
-
-      - name: Display path
-        run: pwd
+          docker build -t test
+          docker push bblksam16/tp2:latest
