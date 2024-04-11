@@ -1,20 +1,21 @@
 name: GitHub Actions Demo
 on: [push]
 jobs:
-  Explore-GitHub-Actions:
+  build-and-publish:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "🔎 The name of the branch is ${{ github.ref }} and the repository is ${{ github.repository }}."
-
       - name: Check out repository code
         uses: actions/checkout@v4
 
-      - run: echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
+      - name: Log in to Docker Hub
+        uses: docker/login-action@v2
+        with:
+          registry: docker.io
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_TOKEN }}
 
-      - run: echo "🖥️ The workflow is now ready to test your code on the runner for EFREI."
-
-      - name: List files in the repository
-        run: |
-          ls ${{ github.workspace }}
-
-      - run: echo "🍏 This job's status is ${{ job.status }}."
+      - name: Build Docker image
+        run: docker build -t mon-utilisateur/nom-image:latest .
+        
+      - name: Push Docker image to Docker Hub
+        run: docker push username/tp2:latest
