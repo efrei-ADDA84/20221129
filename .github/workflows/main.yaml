@@ -21,6 +21,7 @@ jobs:
         # Exécutez votre commande Docker build à partir du répertoire tp2
       - name: Display files
         run:  cd tp2
+        run: ls
 
       - name: Display files
         run:  ls
