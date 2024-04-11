@@ -18,7 +18,7 @@ jobs:
         run: pwd
 
       - name: Docker build
-        run: docker build -t test ~/tp2
+        run: docker build -t test ~/work/20221129/20221129/tp2
 
       - name: Push Docker image to Docker Hub
         run: docker push bblksam16/tp2:latest
