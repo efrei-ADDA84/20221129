@@ -17,19 +17,6 @@ jobs:
       - name: Display path
         run: pwd
 
-      - name: Change directory and save path
-        run: |
-          cd tp2
-          echo "WORKING_DIRECTORY=$(pwd)" >> $GITHUB_ENV
-
-      - name: Display files in tp2 directory
-        run: |
-          cd $WORKING_DIRECTORY
-          ls
-
-      - name: Display files in current directory
-        run: ls
-
       - name: Docker build
         run: docker build -t test ./tp2/
 
