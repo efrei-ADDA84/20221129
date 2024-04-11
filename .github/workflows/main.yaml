@@ -26,4 +26,3 @@ jobs:
         run: |
           cd $WORKING_DIRECTORY
           docker build -t test .
-          docker push bblksam16/tp2:latest
