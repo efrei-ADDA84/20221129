@@ -30,9 +30,9 @@ console.log(getWeather(process.argv.slice(2)[0], process.argv.slice(2)[1]));
 import fetch from "node-fetch";
 
 // Function to fetch weather data
-async function getWeatherData(lat, lon, apiKey) {
+async function getWeatherData(LAT, LONG, API_KEY) {
   //const weatherURL = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}.44&lon=${lon}.04&exclude=hourly,daily&appid=${apiKey}`;
-  const weatherURL = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&APPID=${apiKey}`;
+  const weatherURL = `https://api.openweathermap.org/data/2.5/weather?lat=${LAT}&lon=${LONG}&units=metric&APPID=${API_KEY}`;
   try {
     const response = await fetch(weatherURL);
     const weatherData = await response.json();
@@ -43,11 +43,7 @@ async function getWeatherData(lat, lon, apiKey) {
   }
 }
 // Example usage
-getWeatherData(
-  process.argv.slice(2)[0],
-  process.argv.slice(2)[1],
-  process.argv.slice(2)[2]
-)
+getWeatherData(process.env.LAT, process.env.LONG, process.env.API_KEY)
   .then((data) => {
     console.log(data.main.temp); // Display the weather data for Mumbai
   })

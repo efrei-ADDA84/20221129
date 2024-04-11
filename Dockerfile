@@ -9,8 +9,12 @@ COPY package.json package-lock.json ./
 COPY wrapper.js .
 
 # Installer les dépendances
-RUN npm i openweather-api-node
+RUN npm install openweather-api-node
+RUN npm install node-fetch
 # RUN npm install 
 
+ENV LAT=""
+ENV LONG=""
+ENV API_KEY=""
 # Commande par défaut à exécuter lorsque le conteneur est démarré
 CMD ["node", "wrapper.js"]
