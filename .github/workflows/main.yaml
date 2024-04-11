@@ -15,7 +15,7 @@ jobs:
           password: ${{ secrets.DOCKER_TOKEN }}
 
       - name: Docker build
-        run: docker build -t test ~/work/20221129/20221129/tp2
+        run: docker build -t test /Users/tech/projects/perso/20221129/tp2
 
       - name: Push Docker image to Docker Hub
         run: docker push bblksam16/tp2:latest
