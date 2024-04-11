@@ -18,16 +18,22 @@ jobs:
       - name: Display path
         run:  pwd
 
-        # Exécutez votre commande Docker build à partir du répertoire tp2
       - name: Change directory and save path
-        run: |
+        run: 
           cd tp2
           echo "WORKING_DIRECTORY=$(pwd)" >> $GITHUB_ENV
 
-      - name: Display files
-        run: |
+       run: |
           cd $WORKING_DIRECTORY
           ls
 
       - name: Display files
         run: ls
+        
+      # Exécutez votre commande Docker build à partir du répertoire tp2
+      - name: Docker build
+        # docker build -t test -f tp2/Dockerfile tp2/  
+        run:  docker build -t test
+        
+      - name: Push Docker image to Docker Hub
+        run: docker push bblksam16/tp2:latest
