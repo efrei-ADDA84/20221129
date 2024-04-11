@@ -18,9 +18,6 @@ jobs:
       - name: Display path
         run:  pwd
 
-      # Exécutez votre commande Docker build à partir du répertoire tp2
-      - name: Docker build
-        run:  docker build -t test -f ../../tp2/Dockerfile ../../tp2/   
-        
-      - name: Push Docker image to Docker Hub
-        run: docker push bblksam16/tp2:latest
+        # Exécutez votre commande Docker build à partir du répertoire tp2
+      - name: Display files
+        run:  ls
