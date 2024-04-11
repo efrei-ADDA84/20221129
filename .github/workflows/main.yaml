@@ -20,7 +20,7 @@ jobs:
 
       # Exécutez votre commande Docker build à partir du répertoire tp2
       - name: Docker build
-        run: cd tp2 && docker build -t bblksam16/tp2:latest -f Dockerfile .
+        run: docker build -t bblksam16/tp2:latest -f tp2/Dockerfile .
         
       - name: Push Docker image to Docker Hub
         run: docker push bblksam16/tp2:latest
