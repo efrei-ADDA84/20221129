@@ -15,7 +15,7 @@ jobs:
           password: ${{ secrets.DOCKER_TOKEN }}
 
       - name: Build Docker image
-        run: docker build -t mon-utilisateur/nom-image:latest .
+        run: docker build -t username/tp2:latest -f ../tp2/ .
         
       - name: Push Docker image to Docker Hub
         run: docker push username/tp2:latest
