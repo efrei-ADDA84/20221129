@@ -19,10 +19,12 @@ jobs:
         run:  pwd
 
         # Exécutez votre commande Docker build à partir du répertoire tp2
-      - name: Display files
+      - name: Change directory and save path
         run: |
           cd tp2
-          ls
+          echo "WORKING_DIRECTORY=$(pwd)" >> $GITHUB_ENV
 
       - name: Display files
-        run:  ls
+        run: |
+          cd $WORKING_DIRECTORY
+          ls
