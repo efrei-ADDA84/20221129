@@ -14,9 +14,6 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_TOKEN }}
 
-      - name: Display path
-        run: pwd
-
       - name: Docker build
         run: docker build -t test ~/work/20221129/20221129/tp2
 
