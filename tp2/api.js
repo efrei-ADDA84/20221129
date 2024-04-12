@@ -11,7 +11,7 @@ app.get("/", async (req, res) => {
     const response = await fetch(weatherURL);
     const weatherData = await response.json();
     console.log("temperature : ", weatherData.main.temp);
-    res.json(weatherData.data);
+    res.json(weatherData.main.temp);
   } catch (error) {
     console.error("Error fetching weather data:", error);
     res.status(500).json({ error: "Error fetching weather data" });
