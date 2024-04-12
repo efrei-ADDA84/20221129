@@ -15,6 +15,6 @@ RUN npm install express
 
 ENV API_KEY=""
 # Exposer les ports
-EXPOSE 8084
+EXPOSE 8081
 # Commande par défaut à exécuter lorsque le conteneur est démarré
 CMD ["node", "api.js"]
