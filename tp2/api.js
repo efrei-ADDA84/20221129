@@ -21,5 +21,5 @@ app.get("/", async (req, res) => {
 
 const port = 8081;
 app.listen(port, () => {
-  console.log("API is running on port:", port);
+  console.log("API is running port:", port);
 });
