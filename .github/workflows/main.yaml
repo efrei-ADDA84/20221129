@@ -14,12 +14,8 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_TOKEN }}
 
-      - name: Build image
-        run: docker build -t tp2:v2 ./tp2
-          
-
-      - name: Add tag
-        run: docker tag tp2:v2 bblksam16/tp2:v2 
+      - name: Build and tag the image
+        run: docker build -t bblksam16/tp2:v3 ./tp2
 
       - name: Push Docker image to Docker Hub
-        run: docker push bblksam16/tp2:v2
+        run: docker push bblksam16/tp2:v3
