@@ -23,7 +23,7 @@ jobs:
         run: docker build -t bblksam16/tp3:v1 ./tp3
 
       - name: Log in to Azure Container Registry
-        uses: azure/login-action@v1
+        uses: Azure/login@v2.1.0
         with:
           login-server: ${{ secrets.REGISTRY_LOGIN_SERVER }}
           username: ${{ secrets.REGISTRY_USERNAME }}
