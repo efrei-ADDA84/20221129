@@ -22,12 +22,20 @@ jobs:
       - name: Build and tag the image
         run: docker build -t bblksam16/tp3:v1 ./tp3
 
-      - name: Push Docker image to Docker Hub
-        run: docker push bblksam16/tp3:v1
-
       - name: Log in to Azure Container Registry
         uses: azure/login-action@v1
         with:
-          registry: ${{ secrets.REGISTRY_LOGIN_SERVER }}
+          login-server: ${{ secrets.REGISTRY_LOGIN_SERVER }}
           username: ${{ secrets.REGISTRY_USERNAME }}
           password: ${{ secrets.REGISTRY_PASSWORD }}
+
+      - name: Push Docker image to Docker Hub and on ACR
+        run: docker push bblksam16/tp3:v1
+        docker push <your-acr-name>.azurecr.io/<your-image-name>:<tag>
+
+
+      - name: Push to ACR
+        run: |
+          az acr login --name <your-acr-name>
+          docker tag <your-image-name>:<tag> <your-acr-name>.azurecr.io/<your-image-name>:<tag>
+          docker push <your-acr-name>.azurecr.io/<your-image-name>:<tag>
