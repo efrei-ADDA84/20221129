@@ -19,18 +19,11 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_TOKEN }}
 
-      - name: Build and tag the image
-        run: docker build -t bblksam16/tp3:v1 ./tp3
-
       - name: Log in to Azure Container Registry
         uses: Azure/login@v2.1.0
         with:
-          login-server: ${{ secrets.REGISTRY_LOGIN_SERVER }}
-          username: ${{ secrets.REGISTRY_USERNAME }}
-          password: ${{ secrets.REGISTRY_PASSWORD }}
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
 
-      - name: Push Docker image to Docker Hub
-        run: docker push bblksam16/tp3:v1
 
       - name: Push to ACR
         run: |
