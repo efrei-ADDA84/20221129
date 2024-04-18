@@ -19,7 +19,7 @@ app.get("/", async (req, res) => {
   }
 });
 
-const port = 8081;
+const port = 80;
 app.listen(port, () => {
   console.log("API is running port:", port);
 });
