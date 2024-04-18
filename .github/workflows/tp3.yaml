@@ -25,10 +25,10 @@ jobs:
         run: docker push bblksam16/tp3:v1
 
       - name: Log in to Azure Container Registry
-            env:
-              REGISTRY_LOGIN_SERVER: ${{ secrets.REGISTRY_LOGIN_SERVER }}
-              REGISTRY_USERNAME: ${{ secrets.REGISTRY_USERNAME }}
-              REGISTRY_PASSWORD: ${{ secrets.REGISTRY_PASSWORD }}
-            run: |
-              az login --service-principal -u $AZURE_CREDENTIALS -p $AZURE_CREDENTIALS_PASSWORD --tenant $AZURE_TENANT_ID
-              az acr login --name $REGISTRY_LOGIN_SERVER --username $REGISTRY_USERNAME --password $REGISTRY_PASSWORD
+        env:
+          REGISTRY_LOGIN_SERVER: ${{ secrets.REGISTRY_LOGIN_SERVER }}
+          REGISTRY_USERNAME: ${{ secrets.REGISTRY_USERNAME }}
+          REGISTRY_PASSWORD: ${{ secrets.REGISTRY_PASSWORD }}
+        run: |
+          az login --service-principal -u $AZURE_CREDENTIALS -p $AZURE_CREDENTIALS_PASSWORD --tenant $AZURE_TENANT_ID
+          az acr login --name $REGISTRY_LOGIN_SERVER --username $REGISTRY_USERNAME --password $REGISTRY_PASSWORD
