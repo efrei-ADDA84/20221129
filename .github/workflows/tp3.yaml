@@ -26,6 +26,7 @@ jobs:
         run: docker push bblksam16/tp3:v1
 
       - name: Log in to Azure Container Registry
+        uses: azure/login-action@v1
         env:
           REGISTRY_LOGIN_SERVER: ${{ secrets.REGISTRY_LOGIN_SERVER }}
           REGISTRY_USERNAME: ${{ secrets.REGISTRY_USERNAME }}
