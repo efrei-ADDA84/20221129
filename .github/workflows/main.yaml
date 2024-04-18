@@ -22,3 +22,4 @@ jobs:
 
       - name: Push Docker image to Docker Hub
         run: docker push bblksam16/tp2:v3
+        ports: 8081
