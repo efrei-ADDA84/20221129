@@ -48,8 +48,8 @@ jobs:
         with:
           resource-group: ${{ secrets.RESOURCE_GROUP }}
           name: acrtp3
-          image: ${{ secrets.REGISTRY_LOGIN_SERVER }}/acrtp3:v1
           location: germanywestcentral
+          image: ${{ secrets.REGISTRY_LOGIN_SERVER }}/acrtp3:v1
           dns-name-label: devops-acrtp3
           registry-login-server: ${{ secrets.REGISTRY_LOGIN_SERVER }}
           registry-username: ${{ secrets.REGISTRY_USERNAME }}
