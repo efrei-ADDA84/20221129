@@ -26,9 +26,11 @@ jobs:
         run: docker push bblksam16/tp3:v1
         
       - name: Log in to Azure Container Registry
-        uses: Azure/login@v2.1.0
+        uses: azure/docker-login@v1
         with:
-          creds: ${{ secrets.AZURE_CREDENTIALS }}
+          login-server: ${{ secrets.REGISTRY_LOGIN_SERVER }}
+          username: ${{ secrets.REGISTRY_USERNAME }}
+          password: ${{ secrets.REGISTRY_PASSWORD }}
 
       - name: Tag Docker image for Azure Container Registry
         run: docker tag bblksam16/tp3:v1 ${{ secrets.REGISTRY_LOGIN_SERVER }}/acr-tp3:v1
@@ -49,6 +51,8 @@ jobs:
           image: ${{ secrets.REGISTRY_LOGIN_SERVER }}/acr-tp3:v1
           location: germanywestcentral
           dns-name-label: devops-acr-tp3
-          creds: ${{ secrets.AZURE_CREDENTIALS }}
+          login-server: ${{ secrets.REGISTRY_LOGIN_SERVER }}
+          username: ${{ secrets.REGISTRY_USERNAME }}
+          password: ${{ secrets.REGISTRY_PASSWORD }}
           secure-environment-variables: API_KEY=${{ secrets.API_KEY }}
           ports: 80
