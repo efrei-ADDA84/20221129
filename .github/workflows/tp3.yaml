@@ -51,8 +51,8 @@ jobs:
           image: ${{ secrets.REGISTRY_LOGIN_SERVER }}/acr-tp3:v1
           location: germanywestcentral
           dns-name-label: devops-acr-tp3
-          login-server: ${{ secrets.REGISTRY_LOGIN_SERVER }}
-          username: ${{ secrets.REGISTRY_USERNAME }}
-          password: ${{ secrets.REGISTRY_PASSWORD }}
+          registry-login-server: ${{ secrets.REGISTRY_LOGIN_SERVER }}
+          registry-username: ${{ secrets.REGISTRY_USERNAME }}
+          registry-password: ${{ secrets.REGISTRY_PASSWORD }}
           secure-environment-variables: API_KEY=${{ secrets.API_KEY }}
           ports: 80
