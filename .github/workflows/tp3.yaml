@@ -33,10 +33,10 @@ jobs:
           password: ${{ secrets.REGISTRY_PASSWORD }}
 
       - name: Tag Docker image for Azure Container Registry
-        run: docker tag bblksam16/tp3:v1 ${{ secrets.REGISTRY_LOGIN_SERVER }}/acr-tp3:v1
+        run: docker tag bblksam16/tp3:v1 ${{ secrets.REGISTRY_LOGIN_SERVER }}/_acr-tp3:v1
         
       - name: Push Docker image to Azure Container Registry
-        run: docker push ${{ secrets.REGISTRY_LOGIN_SERVER }}/acr-tp3:v1
+        run: docker push ${{ secrets.REGISTRY_LOGIN_SERVER }}/_acr-tp3:v1
       
       - name: Login to Azure
         uses: azure/login@v1
@@ -47,10 +47,10 @@ jobs:
         uses: azure/aci-deploy@v1
         with:
           resource-group: ${{ secrets.RESOURCE_GROUP }}
-          name: acr-tp3
-          image: ${{ secrets.REGISTRY_LOGIN_SERVER }}/acr-tp3:v1
+          name: _acr-tp3
+          image: ${{ secrets.REGISTRY_LOGIN_SERVER }}/_acr-tp3:v1
           location: germanywestcentral
-          dns-name-label: devops-acr-tp3
+          dns-name-label: devops-_acr-tp3
           registry-login-server: ${{ secrets.REGISTRY_LOGIN_SERVER }}
           registry-username: ${{ secrets.REGISTRY_USERNAME }}
           registry-password: ${{ secrets.REGISTRY_PASSWORD }}
