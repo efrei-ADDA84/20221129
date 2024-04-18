@@ -29,13 +29,10 @@ jobs:
           username: ${{ secrets.REGISTRY_USERNAME }}
           password: ${{ secrets.REGISTRY_PASSWORD }}
 
-      - name: Push Docker image to Docker Hub and on ACR
+      - name: Push Docker image to Docker Hub
         run: docker push bblksam16/tp3:v1
-        docker push <your-acr-name>.azurecr.io/<your-image-name>:<tag>
-
 
       - name: Push to ACR
         run: |
-          az acr login --name <your-acr-name>
-          docker tag <your-image-name>:<tag> <your-acr-name>.azurecr.io/<your-image-name>:<tag>
-          docker push <your-acr-name>.azurecr.io/<your-image-name>:<tag>
+          docker tag bblksam16/tp3:v1 acr-tp3.azurecr.io/bblksam16/tp3:v1
+          docker push acr-tp3.azurecr.io/bblksam16/tp3:v1
