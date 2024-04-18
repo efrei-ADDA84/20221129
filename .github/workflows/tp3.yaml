@@ -3,6 +3,7 @@ on:
   push:
     paths:
       - "tp3/**"
+      - ".github/workflows/tp3.yaml"
 
 jobs:
   build-and-publish:
