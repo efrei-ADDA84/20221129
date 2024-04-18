@@ -30,7 +30,25 @@ jobs:
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
 
-      - name: Push to ACR
-        run: |
-          docker tag bblksam16/tp3:v1 acr-tp3.azurecr.io/bblksam16/tp3:v1
-          docker push acr-tp3.azurecr.io/bblksam16/tp3:v1
+      - name: Tag Docker image for Azure Container Registry
+        run: docker tag bblksam16/tp3:v1 ${{ secrets.REGISTRY_LOGIN_SERVER }}/acr-tp3:v1
+        
+      - name: Push Docker image to Azure Container Registry
+        run: docker push ${{ secrets.REGISTRY_LOGIN_SERVER }}/acr-tp3:v1
+      
+      - name: Login to Azure
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      - name: Deploy to Azure Container Instance
+        uses: azure/aci-deploy@v1
+        with:
+          resource-group: ${{ secrets.RESOURCE_GROUP }}
+          name: acr-tp3
+          image: ${{ secrets.REGISTRY_LOGIN_SERVER }}/acr-tp3:v1
+          location: germanywestcentral
+          dns-name-label: devops-acr-tp3
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+          secure-environment-variables: API_KEY=${{ secrets.API_KEY }}
+          ports: 80
